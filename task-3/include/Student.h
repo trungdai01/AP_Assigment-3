@@ -12,33 +12,39 @@ class Student
     Student(string, string);
     virtual ~Student();
 
-    virtual string getName() const = 0;
-    virtual string getDayOfBirth() const = 0;
-    virtual string getSchoolName() const = 0;
-    virtual string getSchoolType() const = 0;
-    virtual int getNumOfSemesters() const = 0;
-    virtual int getNumOfCourses() const = 0;
-    virtual int getNumOfAssignments() const = 0;
-    virtual int getNumOfTests() const = 0;
-    virtual int getNumOfExams() const = 0;
+    string getName() const;
+    string getDayOfBirth() const;
+    string getSchoolName() const;
+    string getSchoolType() const;
+    int getNumOfSemesters() const;
+    int getNumOfCourses() const;
+    int getNumOfAssignments() const;
+    int getNumOfTests() const;
+    int getNumOfExams() const;
+
+    virtual void setNumOfSemesters() = 0;
+    virtual void setNumOfCourses() = 0;
+    virtual void setNumOfAssignments() = 0;
+    virtual void setNumOfTests() = 0;
+    virtual void setNumOfExams() = 0;
 
     virtual void DoAssignment() = 0;
     virtual void TakeTest() = 0;
     virtual void TakeExam() = 0;
 
-    virtual void Study() = 0;
+    void Study();
 
-    virtual float getAssignmentScore() const = 0;
-    virtual float getTestScore() const = 0;
-    virtual float getExamScore() const = 0;
-    virtual void setGPA() = 0;
-    virtual float getGPA() const = 0;
+    float getAssignmentScore() const;
+    float getTestScore() const;
+    float getExamScore() const;
+    void setGPA();
+    float getGPA() const;
 
-    virtual void displayInfo() const = 0;
+    void displayInfo();
 };
 int randomGenerator();
 
-class StudentFactory
+class School
 {
   public:
     virtual Student* createStudent(string, string, string) = 0;

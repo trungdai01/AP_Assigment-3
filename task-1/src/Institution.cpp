@@ -61,11 +61,7 @@ void Institution::displayInfo()
     {
         int it = i;
         printf("%d.\n", ++it);
-        printf("Name: %s\n", listOfStudents[i]->getName().c_str());
-        printf("Day of birth: %s\n", listOfStudents[i]->getDayOfBirth().c_str());
-        printf("School name: %s\n", listOfStudents[i]->getSchoolName().c_str());
-        printf("School type: %s\n", listOfStudents[i]->getSchoolType().c_str());
-        printf("GPA: %0.2f\n", listOfStudents[i]->getGPA());
+        listOfStudents[i]->displayInfo();
     }
 }
 

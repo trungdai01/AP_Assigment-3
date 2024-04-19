@@ -17,128 +17,27 @@ ColStudent::ColStudent(string name, string dayOfBirth, string schoolName) : Stud
 
 ColStudent::~ColStudent() {}
 
-string ColStudent::getName() const
+void ColStudent::setNumOfSemesters()
 {
-    return student.name;
+    student.numOfSemesters = 4;
 }
 
-string ColStudent::getDayOfBirth() const
+void ColStudent::setNumOfCourses()
 {
-    return student.dayOfBirth;
+    student.numOfCourses = getNumOfSemesters() * 3;
 }
 
-string ColStudent::getSchoolName() const
+void ColStudent::setNumOfAssignments()
 {
-    return student.schoolName;
+    student.numOfAssignments = getNumOfCourses() * 1;
 }
 
-string ColStudent::getSchoolType() const
+void ColStudent::setNumOfTests()
 {
-    return student.schoolType;
+    student.numOfTests = getNumOfCourses() * 1;
 }
 
-int ColStudent::getNumOfSemesters() const
+void ColStudent::setNumOfExams()
 {
-    return student.numOfSemesters;
-}
-
-int ColStudent::getNumOfCourses() const
-{
-    return student.numOfCourses;
-}
-
-int ColStudent::getNumOfAssignments() const
-{
-    return student.numOfAssignments;
-}
-
-int ColStudent::getNumOfTests() const
-{
-    return student.numOfTests;
-}
-
-int ColStudent::getNumOfExams() const
-{
-    return student.numOfExams;
-}
-
-void ColStudent::DoAssignment()
-{
-    for (int i = 0; i < student.numOfAssignments; i++)
-    {
-        scores[0][i] = randomGenerator();
-    }
-    return;
-}
-
-void ColStudent::TakeTest()
-{
-    for (int i = 0; i < student.numOfTests; i++)
-    {
-        scores[1][i] = randomGenerator();
-    }
-    return;
-}
-
-void ColStudent::TakeExam()
-{
-    for (int i = 0; i < student.numOfExams; i++)
-    {
-        scores[2][i] = randomGenerator();
-    }
-    return;
-}
-
-void ColStudent::Study()
-{
-    DoAssignment();
-    TakeTest();
-    TakeExam();
-}
-
-float ColStudent::getAssignmentScore()
-{
-    int sum = 0;
-    for (int i = 0; i < student.numOfAssignments; i++)
-    {
-        sum += scores[0][i];
-    }
-    float avg = (float)(sum / getNumOfAssignments());
-    return avg;
-}
-
-float ColStudent::getTestScore()
-{
-    int sum = 0;
-    for (int i = 0; i < student.numOfTests; i++)
-    {
-        sum += scores[1][i];
-    }
-    float avg = (float)(sum / getNumOfTests());
-    return avg;
-}
-
-float ColStudent::getExamScore()
-{
-    int sum = 0;
-    for (int i = 0; i < student.numOfExams; i++)
-    {
-        sum += scores[2][i];
-    }
-    float avg = (float)(sum / getNumOfExams());
-    return avg;
-}
-
-void ColStudent::setGPA()
-{
-    float assignmentScore = getAssignmentScore();
-    float testScore = getTestScore();
-    float examScore = getExamScore();
-
-    student.gpa = (0.2 * assignmentScore) + (0.3 * testScore) + (0.5 * examScore);
-}
-
-float ColStudent::getGPA()
-{
-    return student.gpa;
+    student.numOfExams = getNumOfCourses() * 1;
 }

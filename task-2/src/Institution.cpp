@@ -2,8 +2,8 @@
 
 Institution::Institution()
 {
-    unistudentFactory = new UniStudentFactory();
-    colstudentFactory = new ColStudentFactory();
+    uniStudent = new University();
+    colStudent = new College();
 }
 Institution::~Institution() {}
 
@@ -36,11 +36,11 @@ void Institution::addStudent()
     Student* student;
     if (schoolType == 1)
     {
-        student = unistudentFactory->createStudent(name, dayOfBirth, schoolName);
+        student = uniStudent->createStudent(name, dayOfBirth, schoolName);
     }
     else if (schoolType == 2)
     {
-        student = colstudentFactory->createStudent(name, dayOfBirth, schoolName);
+        student = colStudent->createStudent(name, dayOfBirth, schoolName);
     }
     else if (schoolType == -1)
         return;

@@ -5,65 +5,39 @@ ColStudent::ColStudent(string name, string dayOfBirth, string schoolName) : Stud
 {
     student.schoolName = schoolName;
     student.schoolType = "College";
-    student.numOfSemesters = 4;
-    student.numOfCourses = student.numOfSemesters * 3;
-    student.numOfAssignments = student.numOfCourses * 1;
-    student.numOfTests = student.numOfCourses * 1;
-    student.numOfExams = student.numOfCourses * 1;
-    scores[0] = vector<int>(student.numOfAssignments);
-    scores[1] = vector<int>(student.numOfTests);
-    scores[2] = vector<int>(student.numOfExams);
 }
 
 ColStudent::~ColStudent() {}
 
-string ColStudent::getName() const
+void ColStudent::setNumOfSemesters()
 {
-    return student.name;
+    student.numOfSemesters = 4;
 }
 
-string ColStudent::getDayOfBirth() const
+void ColStudent::setNumOfCourses()
 {
-    return student.dayOfBirth;
+    student.numOfCourses = getNumOfSemesters() * 3;
 }
 
-string ColStudent::getSchoolName() const
+void ColStudent::setNumOfAssignments()
 {
-    return student.schoolName;
+    student.numOfAssignments = getNumOfCourses() * 1;
 }
 
-string ColStudent::getSchoolType() const
+void ColStudent::setNumOfTests()
 {
-    return student.schoolType;
+    student.numOfTests = getNumOfCourses() * 1;
 }
 
-int ColStudent::getNumOfSemesters() const
+void ColStudent::setNumOfExams()
 {
-    return student.numOfSemesters;
-}
-
-int ColStudent::getNumOfCourses() const
-{
-    return student.numOfCourses;
-}
-
-int ColStudent::getNumOfAssignments() const
-{
-    return student.numOfAssignments;
-}
-
-int ColStudent::getNumOfTests() const
-{
-    return student.numOfTests;
-}
-
-int ColStudent::getNumOfExams() const
-{
-    return student.numOfExams;
+    student.numOfExams = getNumOfCourses() * 1;
 }
 
 void ColStudent::DoAssignment()
 {
+    setNumOfAssignments();
+    scores[0] = vector<int>(getNumOfAssignments());
     for (int& score : scores[0])
     {
         score = randomGenerator();
@@ -73,6 +47,8 @@ void ColStudent::DoAssignment()
 
 void ColStudent::TakeTest()
 {
+    setNumOfTests();
+    scores[1] = vector<int>(getNumOfTests());
     for (int& score : scores[1])
     {
         score = randomGenerator();
@@ -82,6 +58,8 @@ void ColStudent::TakeTest()
 
 void ColStudent::TakeExam()
 {
+    setNumOfExams();
+    scores[2] = vector<int>(getNumOfExams());
     for (int& score : scores[2])
     {
         score = randomGenerator();
@@ -89,70 +67,7 @@ void ColStudent::TakeExam()
     return;
 }
 
-void ColStudent::Study()
-{
-    DoAssignment();
-    TakeTest();
-    TakeExam();
-}
-
-float ColStudent::getAssignmentScore() const
-{
-    int sum = 0;
-    for (int score : scores[0])
-    {
-        sum += score;
-    }
-    float avg = (float)(sum / getNumOfAssignments());
-    return avg;
-}
-
-float ColStudent::getTestScore() const
-{
-    int sum = 0;
-    for (int score : scores[1])
-    {
-        sum += score;
-    }
-    float avg = (float)(sum / getNumOfTests());
-    return avg;
-}
-
-float ColStudent::getExamScore() const
-{
-    int sum = 0;
-    for (int score : scores[2])
-    {
-        sum += score;
-    }
-    float avg = (float)(sum / getNumOfExams());
-    return avg;
-}
-
-void ColStudent::setGPA()
-{
-    float assignmentScore = getAssignmentScore();
-    float testScore = getTestScore();
-    float examScore = getExamScore();
-
-    student.gpa = (0.2 * assignmentScore) + (0.3 * testScore) + (0.5 * examScore);
-}
-
-float ColStudent::getGPA() const
-{
-    return student.gpa;
-}
-
-void ColStudent::displayInfo() const
-{
-    printf("Name: %s\n", getName().c_str());
-    printf("Day of birth: %s\n", getDayOfBirth().c_str());
-    printf("School name: %s\n", getSchoolName().c_str());
-    printf("School type: %s\n", getSchoolType().c_str());
-    printf("GPA: %0.2f\n", getGPA());
-}
-
-Student* ColStudentFactory::createStudent(string name, string birthday, string schoolName)
+Student* College::createStudent(string name, string birthday, string schoolName)
 {
     Student* student = new ColStudent(name, birthday, schoolName);
     student->Study();

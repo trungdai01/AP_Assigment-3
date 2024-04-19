@@ -10,32 +10,14 @@ class ColStudent : public Student
 
     ~ColStudent();
 
-    string getName() const;
-    string getDayOfBirth() const;
-    string getSchoolName() const;
-    string getSchoolType() const;
-    int getNumOfSemesters() const;
-    int getNumOfCourses() const;
-    int getNumOfAssignments() const;
-    int getNumOfTests() const;
-    int getNumOfExams() const;
-
-    void DoAssignment();
-    void TakeTest();
-    void TakeExam();
-
-    void Study();
-
-    float getAssignmentScore();
-    float getTestScore();
-    float getExamScore();
-    void setGPA();
-    float getGPA();
-
-    void displayInfo();
+    void setNumOfSemesters();
+    void setNumOfCourses();
+    void setNumOfAssignments();
+    void setNumOfTests();
+    void setNumOfExams();
 };
 
-class ColStudentFactory : public StudentFactory
+class College : public School
 {
   public:
     Student* createStudent(string, string, string);

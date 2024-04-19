@@ -10,32 +10,18 @@ class UniStudent : public Student
 
     ~UniStudent();
 
-    string getName() const;
-    string getDayOfBirth() const;
-    string getSchoolName() const;
-    string getSchoolType() const;
-    int getNumOfSemesters() const;
-    int getNumOfCourses() const;
-    int getNumOfAssignments() const;
-    int getNumOfTests() const;
-    int getNumOfExams() const;
+    void setNumOfSemesters();
+    void setNumOfCourses();
+    void setNumOfAssignments();
+    void setNumOfTests();
+    void setNumOfExams();
 
     void DoAssignment();
     void TakeTest();
     void TakeExam();
-
-    void Study();
-
-    float getAssignmentScore() const;
-    float getTestScore() const;
-    float getExamScore() const;
-    void setGPA();
-    float getGPA() const;
-
-    void displayInfo() const;
 };
 
-class UniStudentFactory : public StudentFactory
+class University : public School
 {
   public:
     Student* createStudent(string, string, string);
