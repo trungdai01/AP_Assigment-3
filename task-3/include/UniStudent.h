@@ -20,8 +20,6 @@ class UniStudent : public Student
     int getNumOfTests() const;
     int getNumOfExams() const;
 
-    void setGPA();
-
     void DoAssignment();
     void TakeTest();
     void TakeExam();
@@ -31,6 +29,7 @@ class UniStudent : public Student
     float getAssignmentScore() const;
     float getTestScore() const;
     float getExamScore() const;
+    void setGPA();
     float getGPA() const;
 
     void displayInfo() const;
@@ -39,7 +38,5 @@ class UniStudent : public Student
 class UniStudentFactory : public StudentFactory
 {
   public:
-    UniStudentFactory();
-    ~UniStudentFactory();
     Student* createStudent(string, string, string);
 };

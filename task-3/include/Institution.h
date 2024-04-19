@@ -10,6 +10,9 @@ class Institution
     UniStudentFactory* unistudentFactory;
     ColStudentFactory* colstudentFactory;
 
+  private:
+    void sortGPA();
+
   public:
     Institution();
     ~Institution();
@@ -18,5 +21,4 @@ class Institution
     void displayInfo();
     void removeStudent();
     void displayBestStudent();
-    void sortGPA();
 };

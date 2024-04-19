@@ -8,6 +8,9 @@ class Institution
   private:
     vector<Student*> listOfStudents;
 
+  private:
+    void sortGPA();
+
   public:
     Institution();
     ~Institution();
@@ -16,5 +19,4 @@ class Institution
     void displayInfo();
     void removeStudent();
     void displayBestStudent();
-    void sortGPA();
 };

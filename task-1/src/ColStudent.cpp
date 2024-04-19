@@ -62,15 +62,6 @@ int ColStudent::getNumOfExams() const
     return student.numOfExams;
 }
 
-void ColStudent::setGPA()
-{
-    float assignmentScore = getAssignmentScore();
-    float testScore = getTestScore();
-    float examScore = getExamScore();
-
-    student.gpa = (0.2 * assignmentScore) + (0.3 * testScore) + (0.5 * examScore);
-}
-
 void ColStudent::DoAssignment()
 {
     for (int i = 0; i < student.numOfAssignments; i++)
@@ -136,6 +127,15 @@ float ColStudent::getExamScore()
     }
     float avg = (float)(sum / getNumOfExams());
     return avg;
+}
+
+void ColStudent::setGPA()
+{
+    float assignmentScore = getAssignmentScore();
+    float testScore = getTestScore();
+    float examScore = getExamScore();
+
+    student.gpa = (0.2 * assignmentScore) + (0.3 * testScore) + (0.5 * examScore);
 }
 
 float ColStudent::getGPA()

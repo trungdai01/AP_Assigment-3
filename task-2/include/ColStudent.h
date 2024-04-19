@@ -20,8 +20,6 @@ class ColStudent : public Student
     int getNumOfTests() const;
     int getNumOfExams() const;
 
-    void setGPA();
-
     void DoAssignment();
     void TakeTest();
     void TakeExam();
@@ -31,6 +29,7 @@ class ColStudent : public Student
     float getAssignmentScore();
     float getTestScore();
     float getExamScore();
+    void setGPA();
     float getGPA();
 
     void displayInfo();
@@ -39,7 +38,5 @@ class ColStudent : public Student
 class ColStudentFactory : public StudentFactory
 {
   public:
-    ColStudentFactory();
-    ~ColStudentFactory();
     Student* createStudent(string, string, string);
 };

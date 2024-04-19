@@ -9,7 +9,7 @@ Student::Student(string name, string dayOfBirth)
 }
 Student::~Student() {}
 
-int Student::randomGenerator()
+int randomGenerator()
 {
     srand(time(NULL));
     int random = rand();

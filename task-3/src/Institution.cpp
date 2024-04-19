@@ -91,11 +91,13 @@ void Institution::removeStudent()
             if ((*it)->getSchoolType() == type)
             {
                 flag = true;
+                printf("Found at index %d", indexRemove);
                 listOfStudents.erase(it);
                 printf("Remove successfully!!!\n");
                 break;
             }
         }
+        indexRemove++;
     }
     if (!flag) cout << "Not found in the list\n";
     return;

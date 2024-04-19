@@ -62,15 +62,6 @@ int UniStudent::getNumOfExams() const
     return student.numOfExams;
 }
 
-void UniStudent::setGPA()
-{
-    float assignmentScore = getAssignmentScore();
-    float testScore = getTestScore();
-    float examScore = getExamScore();
-
-    student.gpa = (0.2 * assignmentScore) + (0.3 * testScore) + (0.5 * examScore);
-}
-
 void UniStudent::DoAssignment()
 {
     for (int i = 0; i < student.numOfAssignments; i++)
@@ -136,6 +127,15 @@ float UniStudent::getExamScore()
     }
     float avg = (float)(sum / getNumOfExams());
     return avg;
+}
+
+void UniStudent::setGPA()
+{
+    float assignmentScore = getAssignmentScore();
+    float testScore = getTestScore();
+    float examScore = getExamScore();
+
+    student.gpa = (0.2 * assignmentScore) + (0.3 * testScore) + (0.5 * examScore);
 }
 
 float UniStudent::getGPA()

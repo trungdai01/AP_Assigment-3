@@ -62,15 +62,6 @@ int UniStudent::getNumOfExams() const
     return student.numOfExams;
 }
 
-void UniStudent::setGPA()
-{
-    float assignmentScore = getAssignmentScore();
-    float testScore = getTestScore();
-    float examScore = getExamScore();
-
-    student.gpa = (0.2 * assignmentScore) + (0.3 * testScore) + (0.5 * examScore);
-}
-
 void UniStudent::DoAssignment()
 {
     for (int& score : scores[0])
@@ -138,6 +129,15 @@ float UniStudent::getExamScore() const
     return avg;
 }
 
+void UniStudent::setGPA()
+{
+    float assignmentScore = getAssignmentScore();
+    float testScore = getTestScore();
+    float examScore = getExamScore();
+
+    student.gpa = (0.2 * assignmentScore) + (0.3 * testScore) + (0.5 * examScore);
+}
+
 float UniStudent::getGPA() const
 {
     return student.gpa;
@@ -153,11 +153,9 @@ void UniStudent::displayInfo() const
     printf("GPA: %0.2f\n", getGPA());
 }
 
-UniStudentFactory::UniStudentFactory() {}
-UniStudentFactory::~UniStudentFactory() {}
-Student* UniStudentFactory::createStudent(string name, string birthday, string schoolname)
+Student* UniStudentFactory::createStudent(string name, string birthday, string schoolName)
 {
-    Student* student = new UniStudent(name, birthday, schoolname);
+    Student* student = new UniStudent(name, birthday, schoolName);
     student->Study();
     student->setGPA();
     return student;

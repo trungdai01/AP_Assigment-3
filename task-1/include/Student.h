@@ -5,9 +5,9 @@ class Student
 {
   protected:
     s_info student;
+    vector<vector<int>> scores;
 
   public:
-    vector<vector<int>> scores;
     Student();
     Student(string, string);
     virtual ~Student();
@@ -22,8 +22,6 @@ class Student
     virtual int getNumOfTests() const = 0;
     virtual int getNumOfExams() const = 0;
 
-    virtual void setGPA() = 0;
-
     virtual void DoAssignment() = 0;
     virtual void TakeTest() = 0;
     virtual void TakeExam() = 0;
@@ -33,7 +31,8 @@ class Student
     virtual float getAssignmentScore() = 0;
     virtual float getTestScore() = 0;
     virtual float getExamScore() = 0;
+    virtual void setGPA() = 0;
     virtual float getGPA() = 0;
-
-    int randomGenerator();
 };
+
+int randomGenerator();

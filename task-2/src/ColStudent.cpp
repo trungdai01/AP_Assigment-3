@@ -62,15 +62,6 @@ int ColStudent::getNumOfExams() const
     return student.numOfExams;
 }
 
-void ColStudent::setGPA()
-{
-    float assignmentScore = getAssignmentScore();
-    float testScore = getTestScore();
-    float examScore = getExamScore();
-
-    student.gpa = (0.2 * assignmentScore) + (0.3 * testScore) + (0.5 * examScore);
-}
-
 void ColStudent::DoAssignment()
 {
     for (int i = 0; i < student.numOfAssignments; i++)
@@ -138,6 +129,15 @@ float ColStudent::getExamScore()
     return avg;
 }
 
+void ColStudent::setGPA()
+{
+    float assignmentScore = getAssignmentScore();
+    float testScore = getTestScore();
+    float examScore = getExamScore();
+
+    student.gpa = (0.2 * assignmentScore) + (0.3 * testScore) + (0.5 * examScore);
+}
+
 float ColStudent::getGPA()
 {
     return student.gpa;
@@ -152,12 +152,9 @@ void ColStudent::displayInfo()
     printf("GPA: %0.2f\n", getGPA());
 }
 
-ColStudentFactory::ColStudentFactory() {}
-ColStudentFactory::~ColStudentFactory() {}
-
-Student* ColStudentFactory::createStudent(string name, string birthday, string schoolname)
+Student* ColStudentFactory::createStudent(string name, string birthday, string schoolName)
 {
-    Student* student = new ColStudent(name, birthday, schoolname);
+    Student* student = new ColStudent(name, birthday, schoolName);
     student->Study();
     student->setGPA();
     return student;
