@@ -33,23 +33,39 @@ void Institution::addStudent()
     } while (schoolType != 1 && schoolType != 2);
     cin.ignore();
 
-    Student* student;
-    if (schoolType == 1)
+    addStudent(name, dayOfBirth, schoolName, schoolType);
+}
+
+void Institution::addStudent(string name, string dayOfBirth, string schoolName, int type)
+{
+    switch (type)
     {
-        student = university->createStudent(name, dayOfBirth, schoolName);
+        case UNIVERSITY:
+            addUniStudent(name, dayOfBirth, schoolName);
+            break;
+        case COLLEGE:
+            addColStudent(name, dayOfBirth, schoolName);
+            break;
+        case EXIT:
+            return;
+        default:
+            break;
     }
-    else if (schoolType == 2)
-    {
-        student = college->createStudent(name, dayOfBirth, schoolName);
-    }
-    else if (schoolType == -1)
-        return;
-    listOfStudents.push_back(student);
+}
+
+void Institution::addUniStudent(string name, string dayOfBirth, string schoolName)
+{
+    listOfStudents.push_back(university->createStudent(name, dayOfBirth, schoolName));
+}
+
+void Institution::addColStudent(string name, string dayOfBirth, string schoolName)
+{
+    listOfStudents.push_back(college->createStudent(name, dayOfBirth, schoolName));
 }
 
 void Institution::displayInfo()
 {
-    if (listOfStudents.empty() == true)
+    if (listOfStudents.empty())
     {
         cout << " .. The list is empty!!!\n";
         cout << "=======================\n";
@@ -58,7 +74,7 @@ void Institution::displayInfo()
     cout << "Current size: " << listOfStudents.size() << endl;
     cout << "=======================\n";
     int index = 0;
-    for (Student* student : listOfStudents)
+    for (auto student : listOfStudents)
     {
         printf("%d.\n", ++index);
         student->displayInfo();
@@ -69,7 +85,7 @@ void Institution::removeStudent()
 {
     cin.ignore();
     bool flag = false;
-    if (listOfStudents.size() == 0)
+    if (listOfStudents.empty())
     {
         cout << " .. The list is empty!!!\n";
         return;
@@ -79,20 +95,20 @@ void Institution::removeStudent()
     getline(cin, name);
     if (name == "-1") return;
     int indexRemove = 0;
-    for (auto it = listOfStudents.begin(); it != listOfStudents.end(); ++it)
+    for (auto head = listOfStudents.begin(); head != listOfStudents.end(); ++head)
     {
-        if ((*it)->getName() == name)
+        if ((*head)->getName() == name)
         {
             string type;
             cout << "Enter school type: ";
             getline(cin, type);
             if (type == "-1") return;
             cout << "=======================\n";
-            if ((*it)->getSchoolType() == type)
+            if ((*head)->getSchoolType() == type)
             {
                 flag = true;
                 printf("Found at index %d\n", indexRemove);
-                listOfStudents.erase(it);
+                listOfStudents.erase(head);
                 printf("Remove successfully!!!\n");
                 break;
             }
@@ -105,7 +121,7 @@ void Institution::removeStudent()
 
 void Institution::displayBestStudent()
 {
-    if (listOfStudents.size() == 0)
+    if (listOfStudents.empty())
     {
         cout << "... The list is empty!!!\n";
         return;

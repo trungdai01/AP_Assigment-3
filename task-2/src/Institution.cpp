@@ -33,23 +33,39 @@ void Institution::addStudent()
     } while (schoolType != 1 && schoolType != 2);
     cin.ignore();
 
-    Student* student;
-    if (schoolType == 1)
+    addStudent(name, dayOfBirth, schoolName, schoolType);
+}
+
+void Institution::addStudent(string name, string dayOfBirth, string schoolName, int type)
+{
+    switch (type)
     {
-        student = university->createStudent(name, dayOfBirth, schoolName);
+        case UNIVERSITY:
+            addUniStudent(name, dayOfBirth, schoolName);
+            break;
+        case COLLEGE:
+            addColStudent(name, dayOfBirth, schoolName);
+            break;
+        case EXIT:
+            return;
+        default:
+            break;
     }
-    else if (schoolType == 2)
-    {
-        student = college->createStudent(name, dayOfBirth, schoolName);
-    }
-    else if (schoolType == -1)
-        return;
-    listOfStudents.push_back(student);
+}
+
+void Institution::addUniStudent(string name, string dayOfBirth, string schoolName)
+{
+    listOfStudents.push_back(university->createStudent(name, dayOfBirth, schoolName));
+}
+
+void Institution::addColStudent(string name, string dayOfBirth, string schoolName)
+{
+    listOfStudents.push_back(college->createStudent(name, dayOfBirth, schoolName));
 }
 
 void Institution::displayInfo()
 {
-    if (listOfStudents.empty() == true)
+    if (listOfStudents.empty())
     {
         cout << " .. The list is empty!!!\n";
         cout << "=======================\n";
@@ -69,7 +85,7 @@ void Institution::removeStudent()
 {
     cin.ignore();
     bool flag = false;
-    if (listOfStudents.size() == 0)
+    if (listOfStudents.empty())
     {
         cout << " .. The list is empty!!!\n";
         return;
@@ -105,7 +121,7 @@ void Institution::removeStudent()
 
 void Institution::displayBestStudent()
 {
-    if (listOfStudents.size() == 0)
+    if (listOfStudents.empty())
     {
         cout << "... The list is empty!!!\n";
         return;

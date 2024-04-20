@@ -18,6 +18,9 @@ class Institution
     ~Institution();
 
     void addStudent();
+    void addStudent(string, string, string, int);
+    void addUniStudent(string, string, string);
+    void addColStudent(string, string, string);
     void displayInfo();
     void removeStudent();
     void displayBestStudent();

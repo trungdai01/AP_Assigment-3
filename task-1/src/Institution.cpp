@@ -49,7 +49,7 @@ void Institution::addStudent()
 
 void Institution::displayInfo()
 {
-    if (listOfStudents.empty() == true)
+    if (listOfStudents.empty())
     {
         cout << " .. The list is empty!!!\n";
         cout << "=======================\n";
@@ -69,7 +69,7 @@ void Institution::removeStudent()
 {
     cin.ignore();
     bool flag = false;
-    if (listOfStudents.size() == 0)
+    if (listOfStudents.empty())
     {
         cout << " .. The list is empty!!!\n";
         return;
@@ -105,7 +105,7 @@ void Institution::removeStudent()
 
 void Institution::displayBestStudent()
 {
-    if (listOfStudents.size() == 0)
+    if (listOfStudents.empty())
     {
         cout << "... The list is empty!!!\n";
         return;

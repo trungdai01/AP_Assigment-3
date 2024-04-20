@@ -18,6 +18,8 @@ enum
     REMOVE = 3,
     DISPLAY_BEST = 4,
     EXIT = -1,
+    UNIVERSITY = 1,
+    COLLEGE = 2,
 };
 
 typedef struct student_info_t

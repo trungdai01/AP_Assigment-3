@@ -58,7 +58,7 @@ void Student::DoAssignment()
 {
     setNumOfAssignments();
     scores[0] = vector<int>(getNumOfAssignments());
-    for (int& score : scores[0])
+    for (auto& score : scores[0])
     {
         score = randomGenerator();
     }
@@ -69,7 +69,7 @@ void Student::TakeTest()
 {
     setNumOfTests();
     scores[1] = vector<int>(getNumOfTests());
-    for (int& score : scores[1])
+    for (auto& score : scores[1])
     {
         score = randomGenerator();
     }
@@ -80,7 +80,7 @@ void Student::TakeExam()
 {
     setNumOfExams();
     scores[2] = vector<int>(getNumOfExams());
-    for (int& score : scores[2])
+    for (auto& score : scores[2])
     {
         score = randomGenerator();
     }
@@ -99,7 +99,7 @@ void Student::Study()
 float Student::getAssignmentScore() const
 {
     int sum = 0;
-    for (int score : scores[0])
+    for (auto score : scores[0])
     {
         sum += score;
     }
@@ -110,7 +110,7 @@ float Student::getAssignmentScore() const
 float Student::getTestScore() const
 {
     int sum = 0;
-    for (int score : scores[1])
+    for (auto score : scores[1])
     {
         sum += score;
     }
@@ -121,7 +121,7 @@ float Student::getTestScore() const
 float Student::getExamScore() const
 {
     int sum = 0;
-    for (int score : scores[2])
+    for (auto score : scores[2])
     {
         sum += score;
     }
