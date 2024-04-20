@@ -103,7 +103,7 @@ float Student::getAssignmentScore() const
     {
         sum += scores[0][i];
     }
-    float avg = (float)(sum / getNumOfAssignments());
+    float avg = ((float)sum / getNumOfAssignments());
     return avg;
 }
 
@@ -114,7 +114,7 @@ float Student::getTestScore() const
     {
         sum += scores[1][i];
     }
-    float avg = (float)(sum / getNumOfTests());
+    float avg = ((float)sum / getNumOfTests());
     return avg;
 }
 
@@ -125,7 +125,7 @@ float Student::getExamScore() const
     {
         sum += scores[2][i];
     }
-    float avg = (float)(sum / getNumOfExams());
+    float avg = ((float)sum / getNumOfExams());
     return avg;
 }
 
