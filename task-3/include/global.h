@@ -31,7 +31,7 @@ typedef struct student_info_t
     int numOfAssignments;
     int numOfTests;
     int numOfExams;
-    int gpa;
+    float gpa;
 } s_info;
 
 class Student;

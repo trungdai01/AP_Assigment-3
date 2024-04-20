@@ -15,10 +15,6 @@ class UniStudent : public Student
     void setNumOfAssignments();
     void setNumOfTests();
     void setNumOfExams();
-
-    void DoAssignment();
-    void TakeTest();
-    void TakeExam();
 };
 
 class University : public School

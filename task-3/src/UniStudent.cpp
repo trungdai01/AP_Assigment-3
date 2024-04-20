@@ -34,39 +34,6 @@ void UniStudent::setNumOfExams()
     student.numOfExams = getNumOfCourses() * 1;
 }
 
-void UniStudent::DoAssignment()
-{
-    setNumOfAssignments();
-    scores[0] = vector<int>(getNumOfAssignments());
-    for (int& score : scores[0])
-    {
-        score = randomGenerator();
-    }
-    return;
-}
-
-void UniStudent::TakeTest()
-{
-    setNumOfTests();
-    scores[1] = vector<int>(getNumOfTests());
-    for (int& score : scores[1])
-    {
-        score = randomGenerator();
-    }
-    return;
-}
-
-void UniStudent::TakeExam()
-{
-    setNumOfExams();
-    scores[2] = vector<int>(getNumOfExams());
-    for (int& score : scores[2])
-    {
-        score = randomGenerator();
-    }
-    return;
-}
-
 Student* University::createStudent(string name, string birthday, string schoolName)
 {
     Student* student = new UniStudent(name, birthday, schoolName);

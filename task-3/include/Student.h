@@ -28,9 +28,9 @@ class Student
     virtual void setNumOfTests() = 0;
     virtual void setNumOfExams() = 0;
 
-    virtual void DoAssignment() = 0;
-    virtual void TakeTest() = 0;
-    virtual void TakeExam() = 0;
+    void DoAssignment();
+    void TakeTest();
+    void TakeExam();
 
     void Study();
 
@@ -42,6 +42,7 @@ class Student
 
     void displayInfo();
 };
+
 int randomGenerator();
 
 class School

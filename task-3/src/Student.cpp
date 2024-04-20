@@ -54,6 +54,39 @@ int Student::getNumOfExams() const
     return student.numOfExams;
 }
 
+void Student::DoAssignment()
+{
+    setNumOfAssignments();
+    scores[0] = vector<int>(getNumOfAssignments());
+    for (int& score : scores[0])
+    {
+        score = randomGenerator();
+    }
+    return;
+}
+
+void Student::TakeTest()
+{
+    setNumOfTests();
+    scores[1] = vector<int>(getNumOfTests());
+    for (int& score : scores[1])
+    {
+        score = randomGenerator();
+    }
+    return;
+}
+
+void Student::TakeExam()
+{
+    setNumOfExams();
+    scores[2] = vector<int>(getNumOfExams());
+    for (int& score : scores[2])
+    {
+        score = randomGenerator();
+    }
+    return;
+}
+
 void Student::Study()
 {
     setNumOfSemesters();
@@ -70,7 +103,7 @@ float Student::getAssignmentScore() const
     {
         sum += score;
     }
-    float avg = (float)(sum / getNumOfAssignments());
+    float avg = ((float)sum / getNumOfAssignments());
     return avg;
 }
 
@@ -81,7 +114,7 @@ float Student::getTestScore() const
     {
         sum += score;
     }
-    float avg = (float)(sum / getNumOfTests());
+    float avg = ((float)sum / getNumOfTests());
     return avg;
 }
 
@@ -92,7 +125,7 @@ float Student::getExamScore() const
     {
         sum += score;
     }
-    float avg = (float)(sum / getNumOfExams());
+    float avg = ((float)sum / getNumOfExams());
     return avg;
 }
 
@@ -121,7 +154,9 @@ void Student::displayInfo()
 
 int randomGenerator()
 {
-    srand(time(NULL));
-    int random = rand();
-    return (random % 10) + 1;
+    random_device rd;
+    mt19937 eng(rd());
+
+    uniform_int_distribution<int> distr(0, 10);
+    return distr(eng);
 }

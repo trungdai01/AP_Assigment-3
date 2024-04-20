@@ -7,8 +7,8 @@ class Institution
 {
   private:
     vector<Student*> listOfStudents;
-    University* uniStudent;
-    College* colStudent;
+    University* university;
+    College* college;
 
   private:
     void sortGPA();

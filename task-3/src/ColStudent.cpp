@@ -34,39 +34,6 @@ void ColStudent::setNumOfExams()
     student.numOfExams = getNumOfCourses() * 1;
 }
 
-void ColStudent::DoAssignment()
-{
-    setNumOfAssignments();
-    scores[0] = vector<int>(getNumOfAssignments());
-    for (int& score : scores[0])
-    {
-        score = randomGenerator();
-    }
-    return;
-}
-
-void ColStudent::TakeTest()
-{
-    setNumOfTests();
-    scores[1] = vector<int>(getNumOfTests());
-    for (int& score : scores[1])
-    {
-        score = randomGenerator();
-    }
-    return;
-}
-
-void ColStudent::TakeExam()
-{
-    setNumOfExams();
-    scores[2] = vector<int>(getNumOfExams());
-    for (int& score : scores[2])
-    {
-        score = randomGenerator();
-    }
-    return;
-}
-
 Student* College::createStudent(string name, string birthday, string schoolName)
 {
     Student* student = new ColStudent(name, birthday, schoolName);

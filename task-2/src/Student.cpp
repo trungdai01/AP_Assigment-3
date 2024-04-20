@@ -154,7 +154,9 @@ void Student::displayInfo()
 
 int randomGenerator()
 {
-    srand(time(NULL));
-    int random = rand();
-    return (random % 10) + 1;
+    random_device rd;
+    mt19937 eng(rd());
+
+    uniform_int_distribution<int> distr(0, 10);
+    return distr(eng);
 }
